@@ -3,15 +3,15 @@ require_once('helpers.php');
 requireAdmin();
 
 require_once('../models/sliderModel.php');
-require_once('../views/admin/file_handler.php'); // uploadImage()
+require_once('../views/admin/file_handler.php'); 
 
-// ADD SLIDER
+
 if (isset($_POST['add_slider'])) {
     require_csrf();
     $title = $_POST['title'] ?? '';
     $subtitle = $_POST['subtitle'] ?? '';
 
-    // PHP validation
+    
     [$okT, $title] = v_required($title, 2, 80);
     if (!$okT) { if (isAjax()) jsonOut(false, "Title is required"); header("Location: ../views/admin/manage_sliders.php?err=1"); exit; }
     $subtitle = trim((string)$subtitle);
@@ -29,7 +29,7 @@ if (isset($_POST['add_slider'])) {
     }
 }
 
-// DELETE SLIDER
+
 if (isset($_GET['delete'])) {
     require_csrf();
     $id = (int)$_GET['delete'];

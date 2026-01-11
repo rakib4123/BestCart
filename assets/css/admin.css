@@ -1,4 +1,4 @@
-/* admin/style.css */
+
 :root {
     --primary: #24039a;
     --primary-hover: #3207cf;
@@ -25,14 +25,14 @@ body {
     min-height: 100vh;
 }
 
-/* --- NAVBAR (Fixed Layout) --- */
+
 .navbar {
     height: 70px;
     background-color: var(--dark);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* Pushes Logo left, Logout right */
+    
     padding: 0 30px;
     position: sticky;
     top: 0;
@@ -49,7 +49,7 @@ body {
     gap: 10px;
 }
 
-/* This container holds the center links */
+
 .nav-links {
     display: flex;
     gap: 15px;
@@ -86,7 +86,7 @@ body {
     background-color: #dc2626;
 }
 
-/* --- MAIN CONTAINER --- */
+
 .container {
     max-width: 1200px;
     width: 100%;
@@ -102,7 +102,7 @@ body {
     color: var(--dark);
 }
 
-/* --- CARDS (The White Boxes) --- */
+
 .card {
     background: var(--white);
     border: 1px solid var(--border);
@@ -112,11 +112,11 @@ body {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-/* --- FORMS (Fixing the Inputs) --- */
+
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* Two columns */
+    
     gap: 20px;
     margin-bottom: 20px;
 }
@@ -140,7 +140,7 @@ body {
     font-size: 0.95rem;
     outline: none;
     width: 100%;
-    /* Ensures inputs stretch */
+    
     background: #fff;
 }
 
@@ -154,7 +154,7 @@ textarea.form-control {
     font-family: inherit;
 }
 
-/* --- BUTTONS --- */
+
 .btn {
     padding: 10px 20px;
     border: none;
@@ -186,7 +186,7 @@ textarea.form-control {
     color: var(--text);
 }
 
-/* --- TABLES --- */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -216,9 +216,7 @@ td {
     border: 1px solid #e2e8f0;
 }
 
-/* -----------------------------
-   Toast (Popup) Notifications
-------------------------------*/
+
 #toast-container{
     position: fixed;
     top: 18px;
@@ -266,9 +264,7 @@ td {
 .toast-error{ border-left: 4px solid #ef4444; }
 .toast-info{ border-left: 4px solid #3b82f6; }
 
-/* -----------------------------
-   Confirm Modal (Popup)
-------------------------------*/
+
 .modal-overlay{
     position: fixed;
     inset: 0;

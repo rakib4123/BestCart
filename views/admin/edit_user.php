@@ -4,7 +4,7 @@ requireAdmin();
 require_once('layout.php');
 require_once('../../models/userModel.php');
 
-// Security: Check if ID exists
+
 if (!isset($_GET['id']) || trim($_GET['id']) === '') {
     header("location: manage_users.php");
     exit();
@@ -18,7 +18,7 @@ if (!$user) {
     exit();
 }
 
-// Normalize role from DB (supports: Admin/admin, User/user, Customer/customer)
+
 $roleVal = strtolower(trim($user['role'] ?? ''));
 $isAdmin = ($roleVal === 'admin');
 ?>

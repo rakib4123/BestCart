@@ -4,9 +4,9 @@ requireAdmin();
 
 require_once('../models/productModel.php');
 require_once('../models/categoryModel.php');
-require_once('../views/admin/file_handler.php'); // uploadImage()
+require_once('../views/admin/file_handler.php'); 
 
-// ADD PRODUCT (from manage_products.php)
+
 if (isset($_POST['add_product_btn'])) {
     require_csrf();
 
@@ -17,7 +17,7 @@ if (isset($_POST['add_product_btn'])) {
     $cat = $_POST['category'] ?? '';
     $desc = $_POST['desc'] ?? '';
 
-    // PHP validation
+    
     [$okName, $name] = v_required($name, 2, 120);
     if (!$okName) { if (isAjax()) jsonOut(false, "Product name is required"); header("Location: ../views/admin/manage_products.php?err=1"); exit; }
 
@@ -59,7 +59,7 @@ if (isset($_POST['add_product_btn'])) {
     }
 }
 
-// UPDATE PRODUCT (from edit_product.php)
+
 if (isset($_POST['update_btn'])) {
     require_csrf();
 
@@ -71,7 +71,7 @@ if (isset($_POST['update_btn'])) {
     $cat = $_POST['category'] ?? '';
     $desc = $_POST['desc'] ?? '';
 
-    // PHP validation
+    
     [$okName, $name] = v_required($name, 2, 120);
     if (!$okName) { if (isAjax()) jsonOut(false, "Product name is required"); header("Location: ../views/admin/manage_products.php?err=1"); exit; }
 
@@ -97,7 +97,7 @@ if (isset($_POST['update_btn'])) {
         exit;
     }
 
-    $image = $p['image']; // keep old
+    $image = $p['image']; 
 
     if (isset($_FILES['image']['name']) && $_FILES['image']['name'] != "") {
         $p = getProductById($id);
@@ -135,7 +135,7 @@ if (isset($_POST['update_btn'])) {
     }
 }
 
-// DELETE PRODUCT
+
 if (isset($_GET['delete'])) {
     require_csrf();
     $id = (int)$_GET['delete'];

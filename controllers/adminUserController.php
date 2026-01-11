@@ -4,7 +4,7 @@ requireAdmin();
 
 require_once('../models/userModel.php');
 
-// ADD USER
+
 if (isset($_POST['add_user_btn'])) {
     require_csrf();
     $data = [
@@ -15,7 +15,7 @@ if (isset($_POST['add_user_btn'])) {
     ];
 
     
-    // PHP validation
+    
     [$okU, $u] = v_required($data['username'], 2, 50);
     if (!$okU) { if (isAjax()) jsonOut(false, "Username is required"); header("Location: ../views/admin/manage_users.php?err=1"); exit; }
     [$okE, $e] = v_email($data['email']);
@@ -37,7 +37,7 @@ $ok = addUser($data['username'], $data['email'], $data['password'], $data['role'
     }
 }
 
-// UPDATE USER
+
 if (isset($_POST['update_user'])) {
     require_csrf();
     $id = (int)($_POST['user_id'] ?? 0);
@@ -49,7 +49,7 @@ if (isset($_POST['update_user'])) {
     ];
 
     
-    // PHP validation
+    
     [$okId, $id] = v_int($data['id'], 1, null);
     if (!$okId) { if (isAjax()) jsonOut(false, "Invalid user"); header("Location: ../views/admin/manage_users.php?err=1"); exit; }
     [$okU, $u] = v_required($data['username'], 2, 50);
@@ -71,7 +71,7 @@ $ok = updateUser($data);
     }
 }
 
-// DELETE USER
+
 if (isset($_GET['delete'])) {
     require_csrf();
     $id = (int)$_GET['delete'];
