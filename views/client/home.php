@@ -21,9 +21,16 @@
                 <div id="category-list"></div>
             </div>
 
+            <div class="search-center">
+                <form class="search-box" action="search.php" method="get">
+                    <input type="text" name="query" placeholder="Search for products...">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
             <div class="nav-actions">
                 <a href="cart.php" class="nav-btn">🛒 Cart</a>
-                <a href="login.php" class="nav-btn">🙎🏻 Sign In</a>
+                <a id="profileBtn" href="login.php" class="nav-btn">🙎🏻 Sign In</a>
             </div>
         </div>
     </header>
@@ -40,16 +47,19 @@
         </div>
     </section>
 
+
     <section id="category-section" class="categories-container">
         <h1 class="section-title">Categories</h1>
         <div id="category-grid" class="category-grid-circle"></div>
     </section>
+
 
     <section id="featured-products" class="featured-products-container">
         <h1 class="section-title">Featured Products</h1>
         <div id="featured-grid" class="featured-grid"></div>
         <button id="load-more-btn" class="load-more-btn">Load More</button>
     </section>
+
 
     <footer class="main-footer">
         <div class="container footer-content-container">
@@ -98,5 +108,18 @@
     </footer>
 
     <script src="../../assets/js/shop.js?v=<?php echo time(); ?>"></script>
+    <script>
+        const isLoggedIn = <?php echo isset($_SESSION['email']) ? 'true' : 'false'; ?>;
+
+        const profileBtn = document.getElementById("profileBtn");
+
+        if (isLoggedIn) {
+            profileBtn.innerText = "🙎🏻‍♂️ Profile";
+            profileBtn.href = "../../controllers/loginHomeController.php";
+        } else {
+            profileBtn.innerText = "🙎🏻 Sign In";
+            profileBtn.href = "login.php";
+        }
+    </script>
 </body>
 </html>

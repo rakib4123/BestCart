@@ -297,7 +297,6 @@ header {
     padding: 25px 18px;
 }
 
-
 .featured-item {
     display: flex;
     flex-direction: column;
@@ -337,6 +336,7 @@ header {
     display: block;
 }
 
+
 .featured-name {
     margin-top: 15px;
     font-weight: 600;
@@ -356,6 +356,7 @@ header {
     font-size: 15px;
 }
 
+
 .load-more-btn{
     display: block;
     width: 180px;
@@ -373,8 +374,6 @@ header {
 .load-more-btn:hover{
     background-color: var(--primary-hover);
 }
-
-
 
 
 /* footer section  */

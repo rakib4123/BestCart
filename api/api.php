@@ -28,7 +28,7 @@ switch ($action) {
 
     case 'get_products':
         $term = isset($_GET['search']) ? trim($_GET['search']) : "";
-        $cat  = isset($_GET['category']) ? trim($_GET['category']) : "";
+        $cat  = isset($_GET['category']) ? trim($_GET['category']) : ""; 
 
         $all_products = getAllProducts($term);
 
