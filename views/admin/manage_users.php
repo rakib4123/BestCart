@@ -3,7 +3,7 @@ require_once('../../controllers/helpers.php');
 requireAdmin();
 require_once('../../models/userModel.php');
 
-
+// Partial AJAX refresh: return only table rows
 if (isAjax() && (isset($_GET['partial']) && $_GET['partial'] === 'user_rows')) {
     $users = getAllUser();
     if (!empty($users)) {

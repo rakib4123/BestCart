@@ -18,8 +18,9 @@ async function readJsonSafe(res) {
   }
 }
 
-
+// -----------------------------
 // Toast (Popup) Notifications
+// -----------------------------
 function ensureToastContainer() {
   let c = document.getElementById("toast-container");
   if (!c) {
@@ -56,7 +57,9 @@ function showToast(type, message, timeoutMs = 2600) {
   setTimeout(remove, timeoutMs);
 }
 
+// -----------------------------
 // Custom Confirm Modal (Popup)
+// -----------------------------
 function confirmPopup(message) {
   return new Promise((resolve) => {
     const overlay = document.createElement("div");
@@ -92,9 +95,9 @@ function confirmPopup(message) {
   });
 }
 
-
+// -----------------------------
 // Partial refresh helper
-
+// -----------------------------
 async function refreshPartial(targetSelector, url) {
   if (!targetSelector || !url) return;
   const target = document.querySelector(targetSelector);
@@ -168,13 +171,13 @@ document.addEventListener("submit", async (e) => {
 
   e.preventDefault();
 
-  // JS validation
+  // JS validation (HTML5 + simple rules)
   if (form.dataset.validate === 'true') {
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
-    // Numeric fields
+    // Numeric fields must be >= 0
     form.querySelectorAll('input[type="number"]').forEach((inp) => {
       if (inp.value !== '' && Number(inp.value) < 0) inp.value = 0;
     });
@@ -189,7 +192,7 @@ document.addEventListener("submit", async (e) => {
       showToast("success", (json && json.message) || "Success");
     }
 
-
+    // Optional partial refresh (no full page reload)
     if (form.dataset.refreshTarget && form.dataset.refreshUrl) {
       await refreshPartial(form.dataset.refreshTarget, form.dataset.refreshUrl);
     }
@@ -224,7 +227,7 @@ document.addEventListener("click", async (e) => {
 
     showToast("success", json.message || "Done");
 
-
+    // Optional partial refresh (no full page reload)
     if (a.dataset.refreshTarget && a.dataset.refreshUrl) {
       await refreshPartial(a.dataset.refreshTarget, a.dataset.refreshUrl);
     }

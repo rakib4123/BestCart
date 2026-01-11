@@ -5,7 +5,7 @@ requireAdmin();
 require_once('../models/categoryModel.php');
 require_once('../views/admin/file_handler.php'); // uploadImage()
 
-// CATEGORY
+// ADD CATEGORY
 if (isset($_POST['add_cat'])) {
     require_csrf();
     $name = $_POST['name'] ?? '';

@@ -26,7 +26,7 @@ function normalizeOrderStatus($raw){
     return $map[$s] ?? 'Pending';
 }
 
-// ORDER (Place Order)
+// ADD ORDER (Place Order)
 if (isset($_POST['add_order'])) {
     require_csrf();
 
@@ -46,7 +46,7 @@ if (isset($_POST['add_order'])) {
     [$okC, $cust] = v_required($data['customer_name'], 2, 80);
     if (!$okC) { if (isAjax()) jsonOut(false, "Customer name is required"); header("Location: ../views/admin/manage_orders.php?err=1"); exit; }
 
-   
+    // Email is optional for manual orders
     $em = '';
     $emailTrim = trim((string)$data['email']);
     if ($emailTrim !== '') {
@@ -90,7 +90,7 @@ if (isset($_POST['update_order'])) {
         exit;
     }
 
-    
+    // Keep existing values if edit form doesn't send all fields
     $emailRaw = trim((string)($_POST['email'] ?? ($existing['email'] ?? '')));
     $itemsRaw = trim((string)($_POST['items'] ?? ($_POST['product_search'] ?? ($existing['order_items'] ?? ''))));
 
@@ -113,7 +113,7 @@ if (isset($_POST['update_order'])) {
     [$okC, $cust] = v_required($data['customer_name'], 2, 80);
     if (!$okC) { if (isAjax()) jsonOut(false, "Customer name is required"); header("Location: ../views/admin/manage_orders.php?err=1"); exit; }
 
-    
+    // Email is optional (manual orders may not have email)
     $em = '';
     $emailTrim = trim((string)$data['email']);
     if ($emailTrim !== '') {
