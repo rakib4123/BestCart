@@ -53,7 +53,6 @@ function stopAutoSlide() {
   autoTimer = null;
 }
 
-
 function fetchCategories() {
   fetch("../../api/api.php?action=get_categories")
     .then((r) => r.json())
@@ -114,7 +113,6 @@ function loadProducts() {
       }
 
       renderProducts(products);
-
       productOffset += products.length;
 
       if (loadMoreBtn) {
@@ -137,7 +135,6 @@ function renderProducts(products) {
   let html = "";
 
   products.forEach((p) => {
-
     const pid = String(p.id);
     if (LOADED_PRODUCT_IDS.has(pid)) return;
     LOADED_PRODUCT_IDS.add(pid);

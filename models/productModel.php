@@ -18,3 +18,11 @@ function getAllProducts($search = "")
     while ($row = mysqli_fetch_assoc($result)) $data[] = $row;
     return $data;
 }
+
+function getProductById($id)
+{
+    $con = getConnection();
+    $id = mysqli_real_escape_string($con, $id);
+    $result = mysqli_query($con, "SELECT * FROM products WHERE id=$id");
+    return mysqli_fetch_assoc($result);
+}

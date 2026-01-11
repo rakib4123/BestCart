@@ -8,7 +8,7 @@ require_once('../models/sliderModel.php');
 
 $action = $_REQUEST['action'] ?? '';
 
-$public_actions = ['get_products', 'get_categories', 'get_sliders'];
+$public_actions = ['get_products', 'get_product_details', 'get_categories', 'get_sliders'];
 
 if (!in_array($action, $public_actions, true)) {
     http_response_code(400);
@@ -50,6 +50,15 @@ switch ($action) {
             echo json_encode($output);
         } else {
             echo json_encode($all_products);
+        }
+        break;
+
+    case 'get_product_details':
+        if (isset($_GET['id'])) {
+            $product = getProductById($_GET['id']);
+            echo json_encode($product);
+        } else {
+            echo json_encode(null);
         }
         break;
 }
