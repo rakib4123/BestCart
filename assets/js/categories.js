@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const grid = document.getElementById("all-category-grid");
   const profileBtn = document.getElementById("profileBtn");
 
-  // login status from PHP
   const isLoggedIn = window.IS_LOGGED_IN === true;
 
   if (isLoggedIn) {

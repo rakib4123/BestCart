@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="../../assets/css/home.css?v=<?php echo time(); ?>">
 </head>
 <body>
-
-<header>
+    <header>
         <div class="header-container">
             <a href="home.php" class="logo">
                 <img src="../../assets/images/logo.png" alt="BestCart">
@@ -29,7 +28,7 @@
         </div>
     </header>
 
-<section class="banner-wrap">
+    <section class="banner-wrap">
         <div class="container">
             <section class="banner">
                 <div id="slider-container">
@@ -41,12 +40,18 @@
         </div>
     </section>
 
-<section id="category-section" class="categories-container">
+    <section id="category-section" class="categories-container">
         <h1 class="section-title">Categories</h1>
         <div id="category-grid" class="category-grid-circle"></div>
     </section>
 
-<footer class="main-footer">
+    <section id="featured-products" class="featured-products-container">
+        <h1 class="section-title">Featured Products</h1>
+        <div id="featured-grid" class="featured-grid"></div>
+        <button id="load-more-btn" class="load-more-btn">Load More</button>
+    </section>
+
+    <footer class="main-footer">
         <div class="container footer-content-container">
             <div class="footer-column contact-column">
                 <p class="contact-detail">Rockib Regnum Center, level-9, Chattogram, Bangladesh</p>
