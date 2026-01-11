@@ -13,7 +13,7 @@ require_once('../../models/productModel.php');
     $o_count = ($o_res && $o_res instanceof mysqli_result) ? mysqli_num_rows($o_res) : (is_array($o_res) ? count($o_res) : 0);
     $u_count = ($u_res && $u_res instanceof mysqli_result) ? mysqli_num_rows($u_res) : (is_array($u_res) ? count($u_res) : 0);
 
-    // FETCH SALES DATA
+    // --- FETCH SALES DATA ---
     $sales_data = getSalesByDate();
 ?>
 <!DOCTYPE html>

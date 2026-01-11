@@ -4,7 +4,7 @@ requireAdmin();
 require_once('layout.php');
 require_once('../../models/userModel.php');
 
-
+// Security: Check if ID exists
 if (!isset($_GET['id']) || trim($_GET['id']) === '') {
     header("location: manage_users.php");
     exit();
@@ -18,7 +18,7 @@ if (!$user) {
     exit();
 }
 
-
+// Normalize role from DB (supports: Admin/admin, User/user, Customer/customer)
 $roleVal = strtolower(trim($user['role'] ?? ''));
 $isAdmin = ($roleVal === 'admin');
 ?>
@@ -47,7 +47,10 @@ $isAdmin = ($roleVal === 'admin');
             <div class="input-group">
                 <label>Role</label>
 
-                
+                <!-- IMPORTANT FIX:
+                     Use lowercase values so manage_users.php (which checks strtolower(trim(role)) === 'admin')
+                     always works, even if DB previously had "Admin"/"User".
+                -->
                 <select name="role" class="form-control">
                     <option value="customer" <?= !$isAdmin ? 'selected' : '' ?>>Customer</option>
                     <option value="admin" <?= $isAdmin ? 'selected' : '' ?>>Admin</option>

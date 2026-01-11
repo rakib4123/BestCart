@@ -12,7 +12,7 @@ if (!$order) {
     exit;
 }
 
-
+// If DB has a non-email string (manual orders), do not prefill it in a type=email input.
 $emailVal = $order['email'] ?? '';
 function addressOnly($raw){
     $raw = (string)$raw;
@@ -26,7 +26,7 @@ function addressOnly($raw){
         $parts = array_values(array_filter([$addr, $city, $postal], fn($v)=>$v!=='' ));
         return implode(', ', $parts);
     }
-    
+    // Already plain text
     return $raw;
 }
 
@@ -37,7 +37,7 @@ if ($emailVal && !filter_var($emailVal, FILTER_VALIDATE_EMAIL)) {
     $emailVal = '';
 }
 
-
+// Support both old/new stored statuses
 $statusVal = $order['status'] ?? 'Pending';
 if ($statusVal === 'Processing') $statusVal = 'In Process';
 if ($statusVal === 'Delivered') $statusVal = 'Completed';

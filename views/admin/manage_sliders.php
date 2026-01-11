@@ -2,7 +2,7 @@
 require_once('../../controllers/helpers.php');
 requireAdmin();
 require_once('../../models/sliderModel.php');
-
+// Partial AJAX refresh: return only table rows
 if (isAjax() && (isset($_GET['partial']) && $_GET['partial'] === 'slider_rows')) {
     $sliders = getAllSliders();
     if (!empty($sliders)) {

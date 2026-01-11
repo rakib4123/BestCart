@@ -4,7 +4,8 @@ requireAdmin();
 
 require_once('../models/productModel.php');
 require_once('../models/categoryModel.php');
-require_once('../views/admin/file_handler.php'); 
+require_once('../views/admin/file_handler.php'); // uploadImage()
+
 // ADD PRODUCT (from manage_products.php)
 if (isset($_POST['add_product_btn'])) {
     require_csrf();
