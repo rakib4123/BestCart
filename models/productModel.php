@@ -1,7 +1,7 @@
 <?php
 require_once('db.php');
 
-// --- SEARCHABLE PRODUCTS ---
+
 function getAllProducts($search = "")
 {
     $con = getConnection();
@@ -68,7 +68,7 @@ function searchProducts($term)
     $con = getConnection();
     $term = mysqli_real_escape_string($con, $term);
 
-    // Search for the term in the Name OR the Category
+    
     $sql = "SELECT * FROM products 
             WHERE name LIKE '%$term%' 
             OR category LIKE '%$term%' 

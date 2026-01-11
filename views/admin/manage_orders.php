@@ -30,7 +30,7 @@ function renderOrderItems($raw) {
         return htmlspecialchars($out);
     }
 
-    // Not JSON, show a safe trimmed preview
+    
     $raw = trim((string)$raw);
     if ($raw === '') return 'Manual Order';
     $raw = mb_substr($raw, 0, 80);
@@ -39,12 +39,12 @@ function renderOrderItems($raw) {
 
 
 
-// Partial AJAX refresh: return only table rows
+
 if (isAjax() && (isset($_GET['partial']) && $_GET['partial'] === 'order_rows')) {
     $orders = getAllOrders();
     if (!empty($orders)) {
         foreach ($orders as $o) {
-            $color = "#f59e0b"; // Pending
+            $color = "#f59e0b"; 
             if ($o['status'] == 'In Process' || $o['status'] == 'Processing') $color = "#6366f1";
             if ($o['status'] == 'Completed' || $o['status'] == 'Delivered') $color = "#10b981";
             if ($o['status'] == 'Shipped') $color = "#3b82f6";
@@ -52,7 +52,7 @@ if (isAjax() && (isset($_GET['partial']) && $_GET['partial'] === 'order_rows')) 
             if ($o['status'] == 'In Process') $color = "#8b5cf6";
             ?>
             <tr>
-                <td>#<?= $o['id'] ?></td>
+                <td>
                 <td>
                     <b><?= htmlspecialchars($o['customer_name']) ?></b><br>
                     <span style="color:#0369a1; font-size:0.85rem;"><?= isset($o['email']) ? htmlspecialchars($o['email']) : '' ?></span><br>
@@ -89,11 +89,11 @@ if (isAjax() && (isset($_GET['partial']) && $_GET['partial'] === 'order_rows')) 
 
 require_once('layout.php');
 
-// FETCH ALL ORDERS (No PHP Search needed anymore)
+
 $orders = getAllOrders();
 $products = getAllProducts();
 
-    // Prepare Price List for JS
+    
     $price_list_for_js = [];
     foreach($products as $p){
         $price_list_for_js[$p['name']] = (float)$p['price'];
@@ -198,7 +198,7 @@ $products = getAllProducts();
         <tbody id="ordersTableBody">
             <?php foreach($orders as $o){ ?>
             <tr>
-                <td>#<?= $o['id'] ?></td>
+                <td>
                 <td>
                     <b><?= htmlspecialchars($o['customer_name']) ?></b><br>
                     <span style="color:#0369a1; font-size:0.85rem;"><?= isset($o['email']) ? htmlspecialchars($o['email']) : '' ?></span><br>
@@ -242,7 +242,7 @@ $products = getAllProducts();
 <?php require_once('footer.php'); ?>
 
 <script>
-    // 1. Calculator Logic
+    
     const productPrices = <?php echo json_encode($price_list_for_js); ?>;
 
     function calculateTotal() {
@@ -256,7 +256,7 @@ $products = getAllProducts();
         }
     }
 
-    // 2. Filter Logic
+    
     function filterOrders() {
         var input = document.getElementById("orderSearchInput");
         var filter = input.value.toUpperCase();
@@ -264,7 +264,7 @@ $products = getAllProducts();
         var tr = table.getElementsByTagName("tr");
 
         for (var i = 1; i < tr.length; i++) {
-            // Check ID (Col 0) and Info (Col 1)
+            
             var tdId = tr[i].getElementsByTagName("td")[0];
             var tdInfo = tr[i].getElementsByTagName("td")[1];
             
@@ -272,7 +272,7 @@ $products = getAllProducts();
                 var txtId = tdId.textContent || tdId.innerText;
                 var txtInfo = tdInfo.textContent || tdInfo.innerText;
                 
-                // If either ID OR Info matches, show it
+                
                 if (txtId.toUpperCase().indexOf(filter) > -1 || txtInfo.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
                 } else {

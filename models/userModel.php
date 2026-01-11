@@ -20,9 +20,9 @@
     function addUser($userOrUsername, $email = null, $password = null, $role = "customer"){
     $con = getConnection();
 
-    // Support both calls:
-    // 1) addUser($userArray)
-    // 2) addUser($username, $email, $password, $role)
+    
+    
+    
     if (is_array($userOrUsername)) {
         $user = $userOrUsername;
     } else {
@@ -44,23 +44,23 @@
     $phone    = mysqli_real_escape_string($con, $user['phone'] ?? '');
     $address  = mysqli_real_escape_string($con, $user['address'] ?? '');
 
-    // Normalize role: allow admin, otherwise customer
+    
     $roleRaw = strtolower(trim((string)($user['role'] ?? 'customer')));
     $roleDb  = ($roleRaw === 'admin') ? 'admin' : 'customer';
 
-    // Stop if email already exists
+    
     $checkSql = "SELECT id FROM users WHERE email='$email' LIMIT 1";
     $checkResult = mysqli_query($con, $checkSql);
     if($checkResult && mysqli_num_rows($checkResult) > 0){
         return false;
     }
 
-    // Insert into users
+    
     $sql1 = "INSERT INTO users (username, password, email, role)
              VALUES ('$username', '$password', '$email', '$roleDb')";
     $status1 = mysqli_query($con, $sql1);
 
-    // Insert into userinfo (keeps project consistent)
+    
     $sql2 = "INSERT INTO userinfo (username, email, role, phone, address, gender)
              VALUES ('$username', '$email', '$roleDb', '$phone', '$address', '$gender')";
     $status2 = mysqli_query($con, $sql2);
@@ -111,13 +111,13 @@
     $gender   = $data['gender'];
     $address  = $data['address'];
 
-    // update userinfo
+    
     $sql1 = "UPDATE userinfo 
             SET username='$username', phone='$phone', gender='$gender', address='$address'
             WHERE email='$email'";
     $ok1 = mysqli_query($con, $sql1);
 
-    // update users (so navbar/session username matches DB)
+    
     $sql2 = "UPDATE users 
             SET username='$username'
             WHERE email='$email'";

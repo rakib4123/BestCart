@@ -4,7 +4,7 @@ requireAdmin();
 require_once('../../models/productModel.php');
 require_once('../../models/categoryModel.php');
 
-// Partial AJAX refresh: return only table rows (no full page reload)
+
 if (isAjax() && (isset($_GET['partial']) && $_GET['partial'] === 'product_rows')) {
     $products = getAllProducts();
     if (!empty($products)) {
@@ -53,7 +53,7 @@ if (isAjax() && (isset($_GET['partial']) && $_GET['partial'] === 'product_rows')
 
 require_once('layout.php');
 
-// --- FETCH DATA ---
+
 $products = getAllProducts();
 $categories = getAllCategories();
 ?>
@@ -178,7 +178,7 @@ $categories = getAllCategories();
         var tr = table.getElementsByTagName("tr");
 
         for (var i = 1; i < tr.length; i++) {
-            var tdName = tr[i].getElementsByTagName("td")[1]; // Column 1: Name
+            var tdName = tr[i].getElementsByTagName("td")[1]; 
             if (tdName) {
                 var txtValue = tdName.textContent || tdName.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
