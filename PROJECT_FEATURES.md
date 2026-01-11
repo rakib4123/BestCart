@@ -1,3 +1,4 @@
 "# Implemented Features" 
 "## H-01: Implement header and banner feature in home Page" 
 "## H-02: Implement category dropdown and section in header and home Page + catogery page" 
+"## H-02: Implement products section + load more feature in home page" 
