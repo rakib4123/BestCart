@@ -18,6 +18,7 @@ function loadProductDetails(id) {
             ? `<span class="p-old-price">৳${originalPrice}</span> <span class="p-new-price">৳${discountPrice}</span>`
             : `<span class="p-new-price">৳${originalPrice}</span>`;
 
+
         let stock = parseInt(p.quantity);
         let stockStatus = (stock > 0)
             ? `<span style="color:green; font-weight:bold;">In Stock (${stock})</span>`

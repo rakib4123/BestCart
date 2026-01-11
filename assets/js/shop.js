@@ -113,6 +113,7 @@ function loadProducts() {
       }
 
       renderProducts(products);
+
       productOffset += products.length;
 
       if (loadMoreBtn) {

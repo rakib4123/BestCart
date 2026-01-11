@@ -95,7 +95,6 @@
     background: var(--primary-hover);
 }
 
-
 .qty-wrapper {
     margin-bottom: 20px;
     display: flex;
@@ -117,6 +116,7 @@
     gap: 15px;
     margin-top: 20px;
 }
+
 
 .buy-now-btn {
     background: #27ae60;

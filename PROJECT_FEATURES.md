@@ -3,3 +3,4 @@
 "## H-02: Implement category dropdown and section in header and home Page + catogery page" 
 "## H-02: Implement products section + load more feature in home page" 
 "## H-02: Implement products details feature in new page" 
+"## H-05: Implementing products/categories search feature" 
