@@ -1,0 +1,240 @@
+:root{
+    --primary:#24039a;
+    --primary-hover:#6642e7;
+    --light:#FDF2F8;
+    --dark:#0f172a;
+    --border:#e2e8f0;
+    --white:#ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--dark);
+}
+
+/* header  */
+header {
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.10);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-height: 60px;
+}
+
+.header-container img {
+    height: 42px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+}
+
+/* (Optional) Keep search/nav only if your home.php still has them */
+.search-container,
+.search-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-left: 60px;
+}
+
+.search-box {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px 0 0 8px;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-box input:focus {
+    border-color: var(--primary);
+}
+
+.search-box button {
+    padding: 10px 18px;
+    border: none;
+    background: var(--primary);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+}
+
+.search-box button:hover {
+    background: var(--primary-hover);
+}
+
+.nav-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.nav-btn {
+    text-decoration: none;
+    background: var(--primary);
+    color: #fff;
+    padding: 9px 13px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.nav-btn:hover {
+    background: var(--primary-hover);
+}
+
+/* banner slider  */
+.banner-wrap{
+    width: 100%;
+    padding: 18px 0;
+}
+
+.container{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.banner{
+    width: 100%;
+}
+
+#slider-container{
+    position: relative;
+    width: 100%;
+    height: 500px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #e9edf5;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.10);
+}
+
+#slider{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+#prevBtn,
+#nextBtn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    font-size: 22px;
+    line-height: 44px;
+    text-align: center;
+}
+
+#prevBtn{ left: 10px; }
+#nextBtn{ right: 10px; }
+
+#prevBtn:hover,
+#nextBtn:hover{
+    background: rgba(0,0,0,0.65);
+}
+
+
+/* footer section  */
+.main-footer{
+    background: var(--primary);
+    color: #ffffff;
+    padding: 40px 0 10px 0;
+}
+
+.footer-content-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-heading{
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.footer-column ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li{
+    margin-bottom: 8px;
+}
+
+.footer-column a{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-column a:hover{
+    color: #000000;
+}
+
+.contact-detail{
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+.hours{
+    color: #ffffff;
+}
+
+/* Payment methods section */
+.payment-grid{
+    display: flex;
+    gap: 15px;
+}
+
+.payment-icon{
+    width: 70px;
+    height: auto;
+}
+
+.payment-icon.wide{
+    width: 50px;
+}
+
+/* Copyright section */
+.footer-copyright{
+    text-align: center;
+    padding: 12px 0;
+    font-size: 14px;
+}
