@@ -3,10 +3,11 @@ session_start();
 header('Content-Type: application/json');
 
 require_once('../models/sliderModel.php');
+require_once('../models/categoryModel.php');
 
 $action = $_REQUEST['action'] ?? '';
 
-$public_actions = ['get_sliders'];
+$public_actions = ['get_sliders', 'get_categories'];
 
 if (!in_array($action, $public_actions, true)) {
     http_response_code(400);
@@ -16,9 +17,14 @@ if (!in_array($action, $public_actions, true)) {
 
 switch ($action) {
 
-    // --- HOME: SLIDERS (BANNER SECTION) ---
+    // banner section 
     case 'get_sliders':
         echo json_encode(getAllSliders());
+        break;
+
+    // categories ection 
+    case 'get_categories':
+        echo json_encode(getAllCategories());
         break;
 
 }

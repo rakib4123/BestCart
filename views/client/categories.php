@@ -1,20 +1,23 @@
 <?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BestCart | Homepage</title>
-
+    <title>BestCart | Categories</title>
     <link rel="stylesheet" href="../../assets/css/home.css?v=<?php echo time(); ?>">
-</head>
-<body>
+    <link rel="stylesheet" href="../../assets/css/categories.css?v=<?php echo time(); ?>">
 
-<header>
+    <script>
+        window.IS_LOGGED_IN = <?php echo isset($_SESSION['email']) ? 'true' : 'false'; ?>;
+    </script>
+</head>
+
+<body>
+    <header>
         <div class="header-container">
             <a href="home.php" class="logo">
-                <img src="../../assets/images/logo.png" alt="BestCart">
+                <img src="../../assets/images/logo.png">
             </a>
 
             <div class="categories-dropdown">
@@ -22,31 +25,26 @@
                 <div id="category-list"></div>
             </div>
 
+            <div class="search-center">
+                <form class="search-box" action="search.php" method="get">
+                    <input type="text" name="query" placeholder="Search for products...">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
             <div class="nav-actions">
                 <a href="cart.php" class="nav-btn">🛒 Cart</a>
-                <a href="login.php" class="nav-btn">🙎🏻 Sign In</a>
+                <a id="profileBtn" href="login.php" class="nav-btn">🙎🏻‍♂️ Sign In</a>
             </div>
         </div>
     </header>
 
-<section class="banner-wrap">
-        <div class="container">
-            <section class="banner">
-                <div id="slider-container">
-                    <img id="slider" src="" alt="Banner Image">
-                    <button id="prevBtn" type="button">⟨</button>
-                    <button id="nextBtn" type="button">⟩</button>
-                </div>
-            </section>
-        </div>
+    <section class="container cat-page">
+        <div class="cat-title">All Categories</div>
+        <div id="all-category-grid" class="cat-grid"></div>
     </section>
 
-<section id="category-section" class="categories-container">
-        <h1 class="section-title">Categories</h1>
-        <div id="category-grid" class="category-grid-circle"></div>
-    </section>
-
-<footer class="main-footer">
+    <footer class="main-footer">
         <div class="container footer-content-container">
             <div class="footer-column contact-column">
                 <p class="contact-detail">Rockib Regnum Center, level-9, Chattogram, Bangladesh</p>
@@ -92,6 +90,9 @@
         </div>
     </footer>
 
-    <script src="../../assets/js/shop.js?v=<?php echo time(); ?>"></script>
+    <script src="../../assets/js/shop.js"></script>
+    <script src="../../assets/js/categories.js"></script>
+
 </body>
+
 </html>

@@ -1,8 +1,3 @@
-// =============================
-// BANNER FEATURE ONLY (SLIDERS)
-// =============================
-
-// CONFIGURATION & STATE
 let currentSlide = 0;
 let autoTimer = null;
 let bannerImages = [];
@@ -56,9 +51,50 @@ function stopAutoSlide() {
   autoTimer = null;
 }
 
-// INITIALIZATION (Banner only)
+/* --- Categories Feature (from feature2) --- */
+
+function fetchCategories() {
+  fetch("../../api/api.php?action=get_categories")
+    .then((r) => r.json())
+    .then((data) => renderCategories(Array.isArray(data) ? data : []))
+    .catch((err) => console.error("Error loading categories:", err));
+}
+
+function renderCategories(categories) {
+  const headerList = document.getElementById("category-list");
+  const homeGrid = document.getElementById("category-grid");
+
+  // Header dropdown
+  if (headerList) {
+    headerList.innerHTML = categories
+      .map(
+        (cat) =>
+          `<a href="search.php?category=${encodeURIComponent(cat.name)}">${cat.name}</a>`
+      )
+      .join("");
+  }
+
+  // Homepage grid
+  if (homeGrid) {
+    homeGrid.innerHTML = categories
+      .map((cat) => {
+        const imgPath = `../../uploads/${cat.image}`;
+        return `
+          <a class="cat-item" href="search.php?category=${encodeURIComponent(cat.name)}">
+            <div class="cat-circle">
+              <img src="${imgPath}" alt="${cat.name}" onerror="this.src='../../assets/images/default.png'">
+            </div>
+            <div class="cat-name">${cat.name}</div>
+          </a>
+        `;
+      })
+      .join("");
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   fetchBanners();
+  fetchCategories();
 
   const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
