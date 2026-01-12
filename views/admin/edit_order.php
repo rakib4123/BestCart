@@ -43,7 +43,7 @@ if ($statusVal === 'Processing') $statusVal = 'In Process';
 if ($statusVal === 'Delivered') $statusVal = 'Completed';
 ?>
 
-<div class="header-title">Edit Order #<?= $order['id'] ?></div>
+<div class="header-title">Edit Order 
 
 <div class="card" style="max-width: 700px; margin: 0 auto;">
     <form method="post" action="../../controllers/adminOrderController.php" data-ajax="true">

@@ -1,6 +1,7 @@
 <?php
 
 
+
 function sanitizeFileNameSimple($name) {
     $name = basename($name);
     $out = "";
@@ -19,6 +20,8 @@ function sanitizeFileNameSimple($name) {
     }
     return $out;
 }
+
+
 
 
 function uploadImage($file, $fallback = 'default.png') {
@@ -68,7 +71,7 @@ function uploadImage($file, $fallback = 'default.png') {
         return $fallback;
     }
 
-   
+    
     $fileName = time() . "_" . $safeName;
     $targetFile = $uploadDir . DIRECTORY_SEPARATOR . $fileName;
 

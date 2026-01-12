@@ -10,7 +10,7 @@ if (isAjax() && (isset($_GET['partial']) && $_GET['partial'] === 'user_rows')) {
         foreach ($users as $u) {
             ?>
             <tr>
-                <td>#<?= $u['id'] ?></td>
+                <td>
                 <td>
                     <div style="display:flex; align-items:center; gap:10px;">
                         <div style="width:32px; height:32px; background:#e2e8f0; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; color:#64748b;">
@@ -124,7 +124,7 @@ $users = getAllUser();
         <tbody id="usersTableBody">
             <?php foreach($users as $u){ ?>
             <tr>
-                <td>#<?= $u['id'] ?></td>
+                <td>
                 <td>
                     <div style="display:flex; align-items:center; gap:10px;">
                         <div style="width:32px; height:32px; background:#e2e8f0; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; color:#64748b;">

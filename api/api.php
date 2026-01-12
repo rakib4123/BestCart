@@ -41,6 +41,14 @@ switch ($action) {
         if ($cat !== "") {
             $all_products = array_values(array_filter($all_products, function ($p) use ($cat) {
                 // Safe matching (case-insensitive)
+    case 'get_products':
+        $term = isset($_GET['search']) ? trim($_GET['search']) : "";
+        $cat  = isset($_GET['category']) ? trim($_GET['category']) : ""; 
+
+        $all_products = getAllProducts($term);
+
+        if ($cat !== "") {
+            $all_products = array_values(array_filter($all_products, function ($p) use ($cat) {
                 $pCat = isset($p['category']) ? trim($p['category']) : '';
                 return strcasecmp($pCat, $cat) === 0;
             }));

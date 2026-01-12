@@ -93,6 +93,8 @@ function getSalesByDate($days = 7){
     $con = getConnection();
 
     
+    
+    
     $sql = "
         SELECT 
             DATE(order_date) AS order_date,
@@ -114,6 +116,7 @@ function getSalesByDate($days = 7){
     }
     return $data;
 }
+
 
 
 

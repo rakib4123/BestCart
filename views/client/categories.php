@@ -1,19 +1,23 @@
 <?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BestCart | Homepage</title>
-
+    <title>BestCart | Categories</title>
     <link rel="stylesheet" href="../../assets/css/home.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../assets/css/categories.css?v=<?php echo time(); ?>">
+
+    <script>
+        window.IS_LOGGED_IN = <?php echo isset($_SESSION['email']) ? 'true' : 'false'; ?>;
+    </script>
 </head>
+
 <body>
     <header>
         <div class="header-container">
             <a href="home.php" class="logo">
-                <img src="../../assets/images/logo.png" alt="BestCart">
+                <img src="../../assets/images/logo.png">
             </a>
 
             <div class="categories-dropdown">
@@ -30,36 +34,15 @@
 
             <div class="nav-actions">
                 <a href="cart.php" class="nav-btn">🛒 Cart</a>
-                <a id="profileBtn" href="login.php" class="nav-btn">🙎🏻 Sign In</a>
+                <a id="profileBtn" href="login.php" class="nav-btn">🙎🏻‍♂️ Sign In</a>
             </div>
         </div>
     </header>
 
-    <section class="banner-wrap">
-        <div class="container">
-            <section class="banner">
-                <div id="slider-container">
-                    <img id="slider" src="" alt="Banner Image">
-                    <button id="prevBtn" type="button">⟨</button>
-                    <button id="nextBtn" type="button">⟩</button>
-                </div>
-            </section>
-        </div>
+    <section class="container cat-page">
+        <div class="cat-title">All Categories</div>
+        <div id="all-category-grid" class="cat-grid"></div>
     </section>
-
-
-    <section id="category-section" class="categories-container">
-        <h1 class="section-title">Categories</h1>
-        <div id="category-grid" class="category-grid-circle"></div>
-    </section>
-
-
-    <section id="featured-products" class="featured-products-container">
-        <h1 class="section-title">Featured Products</h1>
-        <div id="featured-grid" class="featured-grid"></div>
-        <button id="load-more-btn" class="load-more-btn">Load More</button>
-    </section>
-
 
     <footer class="main-footer">
         <div class="container footer-content-container">
@@ -107,19 +90,9 @@
         </div>
     </footer>
 
-    <script src="../../assets/js/shop.js?v=<?php echo time(); ?>"></script>
-    <script>
-        const isLoggedIn = <?php echo isset($_SESSION['email']) ? 'true' : 'false'; ?>;
+    <script src="../../assets/js/shop.js"></script>
+    <script src="../../assets/js/categories.js"></script>
 
-        const profileBtn = document.getElementById("profileBtn");
-
-        if (isLoggedIn) {
-            profileBtn.innerText = "🙎🏻‍♂️ Profile";
-            profileBtn.href = "../../controllers/loginHomeController.php";
-        } else {
-            profileBtn.innerText = "🙎🏻 Sign In";
-            profileBtn.href = "login.php";
-        }
-    </script>
 </body>
+
 </html>

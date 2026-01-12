@@ -11,6 +11,11 @@ const productsPerLoad = 5;
 const LOADED_PRODUCT_IDS = new Set();
 
 // 1. BANNER SLIDER LOGIC
+let productOffset = 0;
+const productsPerLoad = 5;
+
+const LOADED_PRODUCT_IDS = new Set();
+
 function fetchBanners() {
   fetch("../../api/api.php?action=get_sliders")
     .then((r) => r.json())
