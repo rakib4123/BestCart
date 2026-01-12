@@ -1,7 +1,16 @@
+// CONFIGURATION & STATE
 let currentSlide = 0;
 let autoTimer = null;
 let bannerImages = [];
 
+// ✅ API uses OFFSET in "page"
+let productOffset = 0;
+const productsPerLoad = 5;
+
+// ✅ extra safety: prevent duplicates even if API overlaps
+const LOADED_PRODUCT_IDS = new Set();
+
+// 1. BANNER SLIDER LOGIC
 let productOffset = 0;
 const productsPerLoad = 5;
 
@@ -53,6 +62,7 @@ function stopAutoSlide() {
   autoTimer = null;
 }
 
+// 2. CATEGORIES LOGIC
 function fetchCategories() {
   fetch("../../api/api.php?action=get_categories")
     .then((r) => r.json())
@@ -64,6 +74,7 @@ function renderCategories(categories) {
   const headerList = document.getElementById("category-list");
   const homeGrid = document.getElementById("category-grid");
 
+  // 1) Header Dropdown
   if (headerList) {
     headerList.innerHTML = categories
       .map(
@@ -75,6 +86,7 @@ function renderCategories(categories) {
       .join("");
   }
 
+  // 2) Homepage Grid
   if (homeGrid) {
     homeGrid.innerHTML = categories
       .map((cat) => {
@@ -96,10 +108,12 @@ function renderCategories(categories) {
   }
 }
 
+// 3. PRODUCTS LOGIC (WITH LOAD MORE)  ✅ FIXED
 function loadProducts() {
   const loadMoreBtn = document.getElementById("load-more-btn");
   if (loadMoreBtn) loadMoreBtn.innerText = "Loading...";
 
+  // ✅ IMPORTANT: API expects OFFSET in "page"
   fetch(
     `../../api/api.php?action=get_products&limit=${productsPerLoad}&page=${productOffset}`
   )
@@ -107,6 +121,7 @@ function loadProducts() {
     .then((products) => {
       products = Array.isArray(products) ? products : [];
 
+      // no more products
       if (products.length === 0) {
         if (loadMoreBtn) loadMoreBtn.style.display = "none";
         return;
@@ -114,6 +129,7 @@ function loadProducts() {
 
       renderProducts(products);
 
+      // ✅ move offset forward by how many we received
       productOffset += products.length;
 
       if (loadMoreBtn) {
@@ -136,6 +152,7 @@ function renderProducts(products) {
   let html = "";
 
   products.forEach((p) => {
+    // ✅ prevent duplicates
     const pid = String(p.id);
     if (LOADED_PRODUCT_IDS.has(pid)) return;
     LOADED_PRODUCT_IDS.add(pid);
@@ -164,6 +181,7 @@ function renderProducts(products) {
   grid.insertAdjacentHTML("beforeend", html);
 }
 
+// 4. INITIALIZATION
 document.addEventListener("DOMContentLoaded", function () {
   fetchBanners();
   fetchCategories();
@@ -177,6 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const loadMoreBtn = document.getElementById("load-more-btn");
   if (loadMoreBtn) loadMoreBtn.addEventListener("click", loadProducts);
 
+  // Optional: pause slider on hover
   const sliderContainer = document.getElementById("slider-container");
   if (sliderContainer) {
     sliderContainer.addEventListener("mouseenter", stopAutoSlide);

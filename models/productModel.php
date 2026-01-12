@@ -1,6 +1,7 @@
 <?php
 require_once('db.php');
 
+// --- SEARCHABLE PRODUCTS ---
 
 function getAllProducts($search = "")
 {

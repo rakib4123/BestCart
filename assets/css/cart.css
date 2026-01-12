@@ -1,0 +1,139 @@
+.page-wrap {
+  min-height: 55vh;
+  padding: 30px 0;
+}
+.page-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+}
+.page-title {
+  /* color: #ec009b; */
+  margin: 0 0 14px 0;
+  font-size: 26px;
+}
+.alert {
+  background: #fff3f3;
+  border: 1px solid #ffd2d2;
+  padding: 12px;
+  border-radius: 10px;
+  margin: 12px 0;
+  color: #b40000;
+  font-weight: 600;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1.6fr 0.9fr;
+  gap: 18px;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.cart-table th,
+.cart-table td {
+  padding: 12px;
+  border-bottom: 1px solid #f1f1f1;
+  text-align: left;
+  vertical-align: middle;
+}
+.cart-table th {
+  font-weight: 700;
+  color: #444;
+}
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.item img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  background: #fff;
+}
+.item-name {
+  font-weight: 700;
+  color: #222;
+}
+.small {
+  color: #666;
+  font-size: 13px;
+}
+
+.qty-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.qty-input {
+  width: 70px;
+  padding: 8px;
+  border: 1px solid #cbd1da;
+  border-radius: 8px;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+}
+.btn-primary {
+  background: #24039a;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #6642e7;
+}
+
+.btn-outline {
+  background: #fff;
+  color: #24039a;
+  border: 1px solid #24039a;
+}
+.btn-danger {
+  background: #ff3d34;
+  color: #fff;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  color: #333;
+}
+.summary-total {
+  font-size: 18px;
+  font-weight: 800;
+}
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.muted-link {
+  color: #3978ff;
+  font-weight: 700;
+  text-decoration: none;
+}
+.muted-link:hover {
+  text-decoration: underline;
+}

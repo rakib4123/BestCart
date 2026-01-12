@@ -2,6 +2,7 @@
 session_start();
 header('Content-Type: application/json');
 
+// PUBLIC API: only front-end public data (products, categories, sliders)
 require_once('../models/productModel.php');
 require_once('../models/categoryModel.php');
 require_once('../models/sliderModel.php');
@@ -18,14 +19,28 @@ if (!in_array($action, $public_actions, true)) {
 
 switch ($action) {
 
+    // --- HOME: SLIDERS ---
     case 'get_sliders':
         echo json_encode(getAllSliders());
         break;
 
+    // --- HOME: CATEGORIES ---
     case 'get_categories':
         echo json_encode(getAllCategories());
         break;
 
+    // --- HOME & SEARCH: PRODUCTS ---
+    case 'get_products':
+        $term = isset($_GET['search']) ? trim($_GET['search']) : "";
+        $cat  = isset($_GET['category']) ? trim($_GET['category']) : ""; // ✅ NEW
+
+        // Fetch products (existing behavior)
+        $all_products = getAllProducts($term);
+
+        // ✅ NEW: If category is given, filter results here (does NOT break existing model)
+        if ($cat !== "") {
+            $all_products = array_values(array_filter($all_products, function ($p) use ($cat) {
+                // Safe matching (case-insensitive)
     case 'get_products':
         $term = isset($_GET['search']) ? trim($_GET['search']) : "";
         $cat  = isset($_GET['category']) ? trim($_GET['category']) : ""; 
@@ -39,6 +54,7 @@ switch ($action) {
             }));
         }
 
+        // Handle "Load More"
         if (isset($_GET['limit'])) {
             $limit  = (int)$_GET['limit'];
             $offset = isset($_GET['page']) ? (int)$_GET['page'] : 0;
@@ -53,6 +69,7 @@ switch ($action) {
         }
         break;
 
+    // --- PRODUCT DETAILS ---
     case 'get_product_details':
         if (isset($_GET['id'])) {
             $product = getProductById($_GET['id']);
