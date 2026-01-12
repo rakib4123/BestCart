@@ -1,0 +1,207 @@
+@import url("theme.css");
+
+*{
+    font-family: sans-serif;
+}
+
+.logo{
+    display: flex;
+}
+
+.logoText{
+    color: #00acd4;  
+}
+
+
+
+.navLink{
+    display: flex;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.logoArea{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.logoArea input{
+    border-radius: 5px;
+    border: 1px solid #6d7482;
+    color: #858D9E;
+    padding: 20px;
+    width: 320px;
+}
+
+
+
+#searchBtn{
+    background-color: var(--primary);
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+}
+
+#searchBtn:hover{
+    cursor: pointer;
+}
+
+.pink{
+    background-color: var(--soft);
+    width: full; 
+    height: 40px; 
+    margin: 0px; 
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: flex-end;
+    padding-right: 50px;
+}
+
+.loginBanner{
+    background: linear-gradient(135deg, #8ac6ff, #ffff);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 70px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.loginBox{
+    height: fit-content; 
+    width: 380px; 
+    border: 1px solid white; 
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    
+}
+
+.textField{
+    height: 22px;
+    width: 98%;
+    padding: 6px;
+    margin: 0;
+    border-radius: 5px;
+    border: 1px solid #6d7482;
+    color: #858D9E;
+    margin-bottom: 10px;
+}
+
+#ContinueBtn{
+    background-color: #EFF1F4;
+    width: 98%;
+    height: 40px;
+    text-align: center;
+    margin: 6px;
+    padding: 6px;
+    border-radius: 5px;
+    border: none;
+    font-size:large;
+    font-weight: 600;
+    color: #858D9E;
+}
+
+#ContinueBtn:hover{
+    cursor: pointer;
+}
+
+
+#confirmBtn{
+    background-color: #EFF1F4;
+    width: 98%;
+    height: 40px;
+    text-align: center;
+    margin: 6px;
+    padding: 6px;
+    border-radius: 5px;
+    border: none;
+    font-size:large;
+    font-weight: 600;
+    color: #858D9E;
+}
+
+#otpSection{
+    display: none;
+}
+
+
+
+.signInLink{
+    color: var(--primary); 
+    text-decoration: none;
+    display: inline;
+}
+
+.alreadySign{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    justify-content: center;
+}
+
+.signBanner{
+    color: var(--primary);
+    font-size: 48px;
+}
+
+.signText{
+    color:rgb(23, 24, 23);
+    font-size:18px;
+}
+
+
+/* footer styles */
+
+.footer{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    padding: 40px;
+}
+
+.copyright{
+    border-top: 1px solid #858D9E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+
+.titleFooter{
+    font-size: large;
+    color: black;
+}
+
+
+.followLink{
+    color: var(--primary);
+    text-decoration: none;
+    font-size:xx-large;
+}
+
+.about{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.aref{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #6d7482;
+    gap: 6px;
+}
+
+.aref a{
+    text-decoration: none;
+    color: #6d7482;
+}
