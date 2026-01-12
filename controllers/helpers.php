@@ -1,5 +1,7 @@
 <?php
-// controllers/helpers.php
+
+
+
 
 
 if (!defined('BESTCART_APP_SECRET')) {
@@ -13,7 +15,7 @@ function startSecureSession(){
     $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
         || (isset($_SERVER['SERVER_PORT']) && (int)$_SERVER['SERVER_PORT'] === 443);
 
-    // Security-focused session settings
+    
     ini_set('session.use_only_cookies', '1');
     ini_set('session.use_strict_mode', '1');
     ini_set('session.cookie_httponly', '1');
@@ -46,6 +48,7 @@ function setSecurityHeaders(){
     header('X-XSS-Protection: 0'); 
 
     
+    
     header("Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' https://unpkg.com 'unsafe-inline';");
 }
 
@@ -57,7 +60,7 @@ function isAjax(){
 
 
 function jsonOut($status, $message, $data = []){
-    // Clean any accidental buffered output so JSON stays valid
+    
     while (ob_get_level() > 0) { @ob_end_clean(); }
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode(['status'=>$status, 'message'=>$message, 'data'=>$data]);
@@ -97,7 +100,7 @@ function enableAjaxSafeErrors(){
         exit;
     });
 
-  
+    
     register_shutdown_function(function(){
         $err = error_get_last();
         if ($err && in_array($err['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR], true)) {
@@ -166,7 +169,7 @@ function remember_cookie_set($username, $days = 7){
     ]);
 }
 
-/** Clear remember-me cookie */
+
 function remember_cookie_clear(){
     $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
         || (isset($_SERVER['SERVER_PORT']) && (int)$_SERVER['SERVER_PORT'] === 443);
@@ -200,12 +203,11 @@ function tryAutoLoginFromCookie(){
     $expected = hash_hmac('sha256', $payload, BESTCART_APP_SECRET);
     if (!hash_equals($expected, $sig)) return false;
 
-  
+    
     $_SESSION['admin_status'] = true;
     $_SESSION['admin_user'] = $username;
     return true;
 }
-
 
 
 function requireAdmin(){

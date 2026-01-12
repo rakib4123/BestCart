@@ -4,9 +4,9 @@ requireAdmin();
 require_once('layout.php');
 require_once('../../models/productModel.php');
     require_once('../../models/categoryModel.php');
-    require_once('file_handler.php'); // Required for image upload
+    require_once('file_handler.php'); 
 
-    // 2. Check if ID is provided
+    
     if (!isset($_GET['id'])) {
         header("location: manage_products.php");
         exit();
