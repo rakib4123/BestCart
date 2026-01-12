@@ -1,7 +1,7 @@
 <?php
 require_once('db.php');
 
-// SEARCHABLE PRODUCTS 
+// --- SEARCHABLE PRODUCTS ---
 function getAllProducts($search = "")
 {
     $con = getConnection();
