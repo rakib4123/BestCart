@@ -66,7 +66,6 @@ function applyFilters() {
     list = list.filter((p) => getFinalPrice(p) <= maxP);
   }
 
-  // Sorting by final price
   if (sortPrice === "low") {
     list.sort((a, b) => getFinalPrice(a) - getFinalPrice(b));
   } else if (sortPrice === "high") {
