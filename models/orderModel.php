@@ -92,6 +92,9 @@ function deleteOrder($id){
 function getSalesByDate($days = 7){
     $con = getConnection();
 
+    // NOTE: change column/table names here if your schema differs
+    // Assumptions:
+    // orders table has: order_date (DATE or DATETIME), total_amount (NUMBER), status (optional)
     
     
     
@@ -118,6 +121,8 @@ function getSalesByDate($days = 7){
 }
 
 
+// --- Client helpers ---
+// Guarded to avoid "Cannot redeclare" errors if this file is included twice.
 
 
 if(!function_exists('addOrderReturnId')){
