@@ -2,11 +2,14 @@
 session_start();
 header('Content-Type: application/json');
 
+// PUBLIC API: only front-end public data (products, categories, sliders)
+require_once('../models/productModel.php');
+require_once('../models/categoryModel.php');
 require_once('../models/sliderModel.php');
 
 $action = $_REQUEST['action'] ?? '';
 
-$public_actions = ['get_sliders'];
+$public_actions = ['get_products', 'get_product_details', 'get_categories', 'get_sliders'];
 
 if (!in_array($action, $public_actions, true)) {
     http_response_code(400);
@@ -16,9 +19,63 @@ if (!in_array($action, $public_actions, true)) {
 
 switch ($action) {
 
-    // --- HOME: SLIDERS (BANNER SECTION) ---
+    // --- HOME: SLIDERS ---
     case 'get_sliders':
         echo json_encode(getAllSliders());
         break;
 
+    // --- HOME: CATEGORIES ---
+    case 'get_categories':
+        echo json_encode(getAllCategories());
+        break;
+
+    // --- HOME & SEARCH: PRODUCTS ---
+    case 'get_products':
+        $term = isset($_GET['search']) ? trim($_GET['search']) : "";
+        $cat  = isset($_GET['category']) ? trim($_GET['category']) : ""; // ✅ NEW
+
+        // Fetch products (existing behavior)
+        $all_products = getAllProducts($term);
+
+        // ✅ NEW: If category is given, filter results here (does NOT break existing model)
+        if ($cat !== "") {
+            $all_products = array_values(array_filter($all_products, function ($p) use ($cat) {
+                // Safe matching (case-insensitive)
+    case 'get_products':
+        $term = isset($_GET['search']) ? trim($_GET['search']) : "";
+        $cat  = isset($_GET['category']) ? trim($_GET['category']) : ""; 
+
+        $all_products = getAllProducts($term);
+
+        if ($cat !== "") {
+            $all_products = array_values(array_filter($all_products, function ($p) use ($cat) {
+                $pCat = isset($p['category']) ? trim($p['category']) : '';
+                return strcasecmp($pCat, $cat) === 0;
+            }));
+        }
+
+        // Handle "Load More"
+        if (isset($_GET['limit'])) {
+            $limit  = (int)$_GET['limit'];
+            $offset = isset($_GET['page']) ? (int)$_GET['page'] : 0;
+
+            if ($limit < 1) $limit = 12;
+            if ($offset < 0) $offset = 0;
+
+            $output = array_slice($all_products, $offset, $limit);
+            echo json_encode($output);
+        } else {
+            echo json_encode($all_products);
+        }
+        break;
+
+    // --- PRODUCT DETAILS ---
+    case 'get_product_details':
+        if (isset($_GET['id'])) {
+            $product = getProductById($_GET['id']);
+            echo json_encode($product);
+        } else {
+            echo json_encode(null);
+        }
+        break;
 }

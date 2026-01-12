@@ -47,7 +47,10 @@ $isAdmin = ($roleVal === 'admin');
             <div class="input-group">
                 <label>Role</label>
 
-                
+                <!-- IMPORTANT FIX:
+                     Use lowercase values so manage_users.php (which checks strtolower(trim(role)) === 'admin')
+                     always works, even if DB previously had "Admin"/"User".
+                -->
                 <select name="role" class="form-control">
                     <option value="customer" <?= !$isAdmin ? 'selected' : '' ?>>Customer</option>
                     <option value="admin" <?= $isAdmin ? 'selected' : '' ?>>Admin</option>

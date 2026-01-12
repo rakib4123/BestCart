@@ -13,7 +13,6 @@ body {
     color: var(--dark);
 }
 
-/* header  */
 header {
     width: 100%;
     background: #ffffff;
@@ -145,7 +144,6 @@ header {
     background: var(--primary-hover);
 }
 
-/* banner slider  */
 .banner-wrap{
     width: 100%;
     padding: 18px 0;
@@ -302,6 +300,85 @@ header {
     padding: 25px 18px;
 }
 
+.featured-item {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    height: 320px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.featured-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.featured-img {
+    width: 92%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f1f5f9;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.featured-img img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+
+.featured-name {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: #1e293b;
+    padding: 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.featured-price {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 15px;
+}
+
+
+.load-more-btn{
+    display: block;
+    width: 180px;
+    margin: 24px auto;
+    padding: 12px 0;
+    background: var(--primary);
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.load-more-btn:hover{
+    background-color: var(--primary-hover);
+}
+
+
 /* 2. The Product Card (Fixed Box) */
 .featured-item {
     display: flex;
@@ -442,7 +519,6 @@ FOOTER SECTION
     color: #ffffff;
 }
 
-/* Payment methods section */
 .payment-grid{
     display: flex;
     gap: 15px;
@@ -457,7 +533,6 @@ FOOTER SECTION
     width: 50px;
 }
 
-/* Copyright section */
 .footer-copyright{
     text-align: center;
     padding: 12px 0;
