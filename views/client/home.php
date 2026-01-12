@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../assets/css/home.css?v=<?php echo time(); ?>">
 </head>
 <body>
+    <!-- nav bar  -->
     <header>
         <div class="header-container">
             <a href="home.php" class="logo">
@@ -35,6 +36,7 @@
         </div>
     </header>
 
+    <!-- banner section  -->
     <section class="banner-wrap">
         <div class="container">
             <section class="banner">
@@ -47,20 +49,20 @@
         </div>
     </section>
 
-
+    <!-- category section  -->
     <section id="category-section" class="categories-container">
         <h1 class="section-title">Categories</h1>
         <div id="category-grid" class="category-grid-circle"></div>
     </section>
 
-
+    <!-- products section  -->
     <section id="featured-products" class="featured-products-container">
         <h1 class="section-title">Featured Products</h1>
         <div id="featured-grid" class="featured-grid"></div>
         <button id="load-more-btn" class="load-more-btn">Load More</button>
     </section>
 
-
+    <!-- footer  -->
     <footer class="main-footer">
         <div class="container footer-content-container">
             <div class="footer-column contact-column">
