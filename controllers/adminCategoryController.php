@@ -3,9 +3,9 @@ require_once('helpers.php');
 requireAdmin();
 
 require_once('../models/categoryModel.php');
-require_once('../views/admin/file_handler.php'); // uploadImage()
+require_once('../views/admin/file_handler.php'); 
 
-// CATEGORY
+
 if (isset($_POST['add_cat'])) {
     require_csrf();
     $name = $_POST['name'] ?? '';
@@ -29,7 +29,7 @@ if (isset($_POST['add_cat'])) {
     }
 }
 
-// UPDATE CATEGORY
+
 if (isset($_POST['update_cat'])) {
     require_csrf();
     $id = (int)($_POST['category_id'] ?? 0);
@@ -65,7 +65,7 @@ if (isset($_POST['update_cat'])) {
     }
 }
 
-// DELETE CATEGORY
+
 if (isset($_GET['delete'])) {
     require_csrf();
     $id = (int)$_GET['delete'];

@@ -178,7 +178,7 @@ $categories = getAllCategories();
         var tr = table.getElementsByTagName("tr");
 
         for (var i = 1; i < tr.length; i++) {
-            var tdName = tr[i].getElementsByTagName("td")[1]; // Column 1: Name
+            var tdName = tr[i].getElementsByTagName("td")[1]; 
             if (tdName) {
                 var txtValue = tdName.textContent || tdName.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {

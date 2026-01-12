@@ -95,6 +95,9 @@ function getSalesByDate($days = 7){
     // NOTE: change column/table names here if your schema differs
     // Assumptions:
     // orders table has: order_date (DATE or DATETIME), total_amount (NUMBER), status (optional)
+    
+    
+    
     $sql = "
         SELECT 
             DATE(order_date) AS order_date,
@@ -120,6 +123,8 @@ function getSalesByDate($days = 7){
 
 // --- Client helpers ---
 // Guarded to avoid "Cannot redeclare" errors if this file is included twice.
+
+
 if(!function_exists('addOrderReturnId')){
 function addOrderReturnId($o){
     $con = getConnection();
